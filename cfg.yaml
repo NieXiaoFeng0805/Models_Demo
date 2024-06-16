@@ -1,0 +1,68 @@
+dataset:
+  train_img_root: E:\PolyDemo\Data\TrainDataset\image\
+  train_label_root: E:\PolyDemo\Data\TrainDataset\mask\
+
+  test_CVC-300_img: './Data/TestDataset/CVC-300/images/'
+  test_CVC-300_label: './Data/TestDataset/CVC-300/masks/'
+
+  test_CVC-ClinicDB_img: './Data/TestDataset/CVC-ClinicDB/images/'
+  test_CVC-ClinicDB_label: './Data/TestDataset/CVC-ClinicDB/masks/'
+
+  test_CVC-ColonDB_img: './Data/TestDataset/CVC-ColonDB/images/'
+  test_CVC-ColonDB_label: './Data/TestDataset/CVC-ColonDB/masks/'
+
+  test_ETIS-LaribPolypDB_img: './Data/TestDataset/ETIS-LaribPolypDB/images/'
+  test_ETIS-LaribPolypDB_label: './Data/TestDataset/ETIS-LaribPolypDB/masks/'
+
+  test_Kvasir_img: './Data/TestDataset/Kvasir/images/'
+  test_Kvasir_label: './Data/TestDataset/Kvasir/masks/'
+
+  class_num: 1
+  batch_size: 1
+  num_workers: 2
+
+Train:
+  size: 352
+  random_scale_crop_range: [ 0.75, 1, 1.25 ]
+  optimizer: AdamW
+  device: cuda
+  lr: 1e-4
+  epoch: 2
+  checkpoint_save_path: E:\PolyDemo\checkpoint\
+  logger_path: E:\PolyDemo\log\
+  gradient_clipping_margin: 0.5
+model:
+  model_name:
+    Unet: Unet
+    Swin: Swin
+    ConvXt: ConvXt
+    PolypPVT: PolypPVT
+    Demo: Demo
+    MA_LFF: MA_LFF
+    LDNet: LDNet
+    LDNet_res34: LDNet_res34
+    PNA_MFF: PNA_MFF
+    FBCAN: FBCAN
+    SSFormer: SSFormer
+    EdgeNeXt: EdgeNeXt
+    HIF: HIF
+    FinalVersion_1: FinalVersion_1
+
+  from_epoch: 0
+
+test:
+  save_path: E:\PolyDemo\Results\
+
+out:
+  PolypPVT: 2
+  Unet: 1
+  Demo: 1
+  MA_LFF: 1
+  PNA_MFF: 1
+  LDNet: 1
+  FBCAN: 1
+  SSFormer: 1
+  EdgeNeXt: 1
+  HIF: 1
+  FinalVersion_1: 4
+  Best_version: 4
